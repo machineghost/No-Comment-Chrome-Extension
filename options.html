@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>No Comment Options</title>
+<style>
+
+    /*
+     Time inputs: hide cancel icon so users can't pick a "null" time.
+     @see https://stackoverflow.com/questions/19655250/is-it-possible-to-disable-input-time-clear-button
+    */
+    input[type="time"]::-webkit-clear-button {
+        display: none;
+    }
+
+    body {
+        width: 350px;
+    }
+    h3 {
+        margin: 0.5em 0;
+    }
+    input:not([type]) {
+        width: 2em;
+    }
+    label {
+        font-weight: bold;
+    }
+    table {
+        text-align: center;
+        width: 300px;
+    }
+    td, th {
+        margin: 0;
+        max-width: 40px;
+        padding: 2px;
+        width: 40px;
+    }
+    textarea {
+        height: 75px;
+        width: 300px;
+    }
+    ul{
+        list-style-type: none;
+        margin-bottom: 2.5em;
+    }
+    li input {
+        margin-bottom: 10px;
+    }
+    #confirmationMessageContainer {
+        margin-top: 10px;
+    }
+    #save {
+        float: right;
+        margin: 1em;
+    }
+    #status {
+        font-size: 1.5em;
+        height: 2em;
+        padding-top: 2em;
+        text-align: center;
+    }
+    #weekly-days-and-hours-wrapper {
+        border: 1px solid black;
+        margin: 1.5em auto 0;
+        min-width: 0;
+        padding: 5px;
+        width: 320px;
+    }
+    #weekly-hours-wrapper {
+        margin-bottom: 1em;
+        text-align: center
+    }
+</style>
+
+</head>
+<body>
+
+<h3>Action</h3>
+<ul>
+    <li>
+        <input name="action" type="radio" value="confirm">
+        Allow commenting with confirmation
+        <div id="confirmationMessageContainer">
+            <label for="confirmationMessage">Confirmation Message:</label>
+            <textarea id="confirmationMessage"></textarea>;
+        </div>
+    </li>
+    <li>
+        <input name="action" type="radio" value="prohibit">
+        Prohibit commenting during enabled period
+    </li>
+</ul>
+
+<h3>Time Period Enabled</h3>
+<div style="padding: 0 2em;">
+    Select the time and days of the week when you would like No Comment to
+    prevent you from commenting:
+</div>
+<div id="weekly-days-and-hours-wrapper">
+    <div id="weekly-hours-wrapper">
+        <input id="weekly-start" type="time">
+        -
+        <input id="weekly-end" type="time">
+    </div>
+    <table>
+        <tr>
+            <th><label for="mon">Mon</label></th>
+            <th><label for="tues">Tues</label></th>
+            <th><label for="wed">Wed</label></th>
+            <th><label for="thur">Thur</label></th>
+            <th><label for="fri">Fri</label></th>
+            <th><label for="sat">Sat</label></th>
+            <th><label for="sun">Sun</label></th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="work-week-day" id="mon"></td>
+            <td><input type="checkbox" class="work-week-day" id="tues"></td>
+            <td><input type="checkbox" class="work-week-day" id="wed"></td>
+            <td><input type="checkbox" class="work-week-day" id="thur"></td>
+            <td><input type="checkbox" class="work-week-day" id="fri"></td>
+            <td><input type="checkbox" class="work-week-day" id="sat"></td>
+            <td><input type="checkbox" class="work-week-day" id="sun"></td>
+        </tr>
+    </table>
+    <div style="margin-top: 1em"><strong>Extension Enabled:</strong></div>
+    <div id="baseText"></div>
+</div>
+
+
+
+
+<div id="status"></div>
+
+<button id="save">Save</button>
+
+<!--
+<hr>
+
+<h3>(Stretch Goal) Add Additional Time Periods</h3>
+
+Add:
+<select>
+    <option>Specific Date</option>
+    <option>Weekly Period</option>
+    <option>Monthly Period</option>
+</select>
+
+if specific: date selection ui
+if weekly: weekly period UI
+if monthly: monthly period UI
+<input type="submit" value="Add Specific Date (or Add ___ Period)">
+
+
+-->
+
+<script src="util.js"></script>
+<script src="optionsUtil.js"></script>
+<script src="optionsLoading.js"></script>
+<script src="optionsPage.js"></script>
+<script src="optionsSaving.js"></script>
+
+</body>
+</html>
