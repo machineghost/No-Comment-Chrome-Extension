@@ -14,8 +14,6 @@ const SATURDAY = 6;
 const SUNDAY = 7;
 
 
-const blockedDays = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY];
-
 // Adds a class to a textarea so we know not to block it
 const preventFutureBlocking = el => el.className += ` disable-blocking`;
 
@@ -23,6 +21,16 @@ const preventFutureBlocking = el => el.className += ` disable-blocking`;
 // minutes, then "rounds up" (adds one more minute if the seconds are non-zero)
 const getCurrentRoundedUpMinutes = date =>
   date.getHours() * 60 + (date.getMinutes() + (date.getSeconds() ? 1 : 0));
+
+const numericDayToWeekday = day => ({
+    0: `sun`,
+    1: `mon`,
+    2: `tues`,
+    3: `wed`,
+    4: `thurs`,
+    5: `fri`,
+    6: `sat`
+  })[day];
 
 const handleFocus = ({ action, confirmationMessage, days, end, start }, e) => {
   const now = new Date();
@@ -38,7 +46,7 @@ const handleFocus = ({ action, confirmationMessage, days, end, start }, e) => {
   if (minutes > toMinutes(end)) return;
 
   // Only block during the specified days
-  if (!blockedDays.includes(now.getDay())) return;
+  if (!days.includes(numericDayToWeekday(now.getDay()))) return;
 
   // console.log(3)
   // Only block textarea's

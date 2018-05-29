@@ -20,7 +20,7 @@ const getOptionsValues = func =>
 // Given an object with hours and amPm properties, returns the hours, plus
 // twelve if the amPm is PM
 const get24HoursFromTimeObject = ({ hours, amPm }) =>
-  hours + (amPm === `PM` ? 12 : 0);
+  parseInt(hours) + (amPm === `PM` ? 12 : 0);
 
 // Given '13:05' returns [13, 5]; used to see if one time is after another
 const timeStringToHoursAndMinutes = timeString => {
@@ -30,10 +30,10 @@ const timeStringToHoursAndMinutes = timeString => {
 
 // Converts { hours: 1, minutes: 30, amPm: AM } => 90
 const timeObjectToMinutes = timeObject =>
-  get24HoursFromTimeObject(timeObject) * 60 + timeObject.minutes;
+  get24HoursFromTimeObject(timeObject) * 60 + parseInt(timeObject.minutes);
 
 function timeStringToMinutes(timeStringOrObject) {
-  const [hours, minutes] = timeStringToHoursAndMinutes(timeStringOrObject)
+  const [hours, minutes] = timeStringToHoursAndMinutes(timeStringOrObject);
   return hours * 60 + minutes;
 }
 
