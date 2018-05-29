@@ -43,8 +43,12 @@ const titleCase = original =>
     txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
 // Time inputs expect "09:00", not "9:00"; this adds the leading 0
-const zeroPad = hoursOrMinutes =>
-  hoursOrMinutes < 10 ? `0${hoursOrMinutes}` : hoursOrMinutes;
+const zeroPad = hoursOrMinutes => {
+  const parsed = parseInt(hoursOrMinutes);
+  if (!parsed) return `00`;
+
+  return parsed < 10 ? `0${parsed}` : parsed;
+};
 
 // Given an object with time properties returns a string version of that time
 const formatTimeObject = ({ hours, minutes, amPm }) =>
