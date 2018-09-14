@@ -12,3 +12,9 @@ No Comment is an extension for Google Chrome which lets you either between:
 Of course, you still want to be able to comment when you're not working, so No Comment let's you specify exactly what time and days of the week you want it to operate; the rest of the time it allows you to comment normally.
 
 No Comment is completely free.  If you find any bugs or wish to suggest any features, please submit them using the "issues" tab above.
+
+## Get No Comment
+
+No comment can be installed [here][1].
+
+[1]:  https://chrome.google.com/webstore/detail/no-comment/adfmfagkcggioepkpbepbplpkaklgmgj?hl=en
